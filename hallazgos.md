@@ -34,3 +34,16 @@
     "id": 1,
     "title": "Titulo modificado con PUT"
   }
+
+### Análisis Tarea 10: Encuentra el límite
+- **Experimento de límites en JSONPlaceholder:**
+  - Petición a `GET /posts/100`: Retorna código **`200 OK`** con los datos de la publicación. Es el último recurso existente.
+  - Petición a `GET /posts/101`: Retorna código **`404 Not Found`** con un objeto vacío `{}`. Es el primer recurso inexistente.
+- **Nombre de este tipo de caso de prueba:** Se conoce como **Análisis de Valores Límite (Boundary Value Analysis - BVA)** o Pruebas en Fronteras.
+- **¿Por qué los defectos se concentran en los límites?:** Porque en la programación de software, la lógica condicional (como ciclos `for`, condiciones `if (id <= 100)` o validaciones de rangos) suele fallar frecuentemente por errores de "desfase por uno" (off-by-one errors) o confusiones entre `<` y `<=`.
+
+### Análisis Tarea 11: Explora otros recursos
+1. **Recurso adicional 1 (`GET /users`):** Retorna una colección con 10 usuarios con campos detallados como `name`, `username`, `email`, `address`, y `company`.
+2. **Recurso adicional 2 (`GET /comments`):** Retorna una colección de 500 comentarios que incluyen `postId`, `id`, `name`, `email` y `body`.
+3. **Ruta anidada (`GET /posts/1/comments`):** Retorna todos los comentarios pertenecientes únicamente a la publicación con `id: 1`.
+- **Deducción de la estructura de las URL:** La estructura sigue las convenciones RESTful de jerarquía de recursos, donde la ruta base `/recurso/id/subrecurso` (`/posts/1/comments`) representa la relación padre-hijo (los comentarios asignados al post con ID 1).
